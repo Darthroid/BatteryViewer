@@ -10,38 +10,74 @@ import SwiftUI
 import WidgetKit
 
 struct BatteryWidgetSmall: View {
-	var batteries: [InternalBattery]
+	@State var batteries: [InternalBattery]
 	
-	func imageName(for battery: InternalBattery) -> String {
-		if battery.acPowered == true {
-			return "battery.100.bolt"
-		} else {
-			switch battery.charge ?? 0 {
-			case 25...75: 	return "battery.25"
-			case 76...100: 	return "battery.100"
-			default: 		return "battery.0"
+	var columnGrid: [GridItem] = [GridItem](repeating: .init(.flexible()), count: 2)
+
+	func elements() -> [InternalBattery] {
+		var elements = batteries
+		if elements.count < 4 {
+			var arr = [InternalBattery]()
+			for _ in 0...(4 - elements.count) {
+				arr.append(InternalBattery())
 			}
+			elements.append(contentsOf: arr)
 		}
+		
+		return Array(elements.prefix(4))
 	}
 	
 	var body: some View {
-		ForEach(batteries, id: \.self) { battery in
-//			VStack {
-//				Text(battery.name ?? "")
-//					.font(.title)
-				Label(
-					String(format: "%.0f", battery.charge?.rounded(.up) ?? 0) + "%",
-					systemImage: self.imageName(for: battery)
+		if batteries.count > 1 {
+			GeometryReader { geometry in
+				LazyVGrid(columns: columnGrid, spacing: 8) {
+					ForEach(elements()) { battery in
+						CircularPercentageView(battery: battery)
+							.frame(
+								height: (geometry.frame(in: .local).height) / 2
+							)
+					}
+				}
+				.frame(
+					maxWidth: geometry.frame(in: .local).width,
+					maxHeight: geometry.frame(in: .local).height
 				)
-				.font(.title)
-//			}
+			}
+			.padding(8)
+		} else {
+			if let battery = batteries.first {
+				GeometryReader { geometry in
+					VStack(alignment: .leading) {
+						HStack(spacing: 8) {
+							CircularPercentageView(battery: battery)
+							Spacer()
+						}
+						.frame(height: geometry.frame(in: .local).height / 2)
+						Spacer()
+						Text(String(format: "%.0f %%", (battery.charge ?? 0)))
+							.font(.system(size: 40))
+							.fontWeight(.medium)
+							.padding(.horizontal, 8)
+					}
+				}
+				.padding(8)
+			}
 		}
 	}
 }
 
 struct BatteryWidgetSmall_Previews: PreviewProvider {
+	static func batteryPlaceHolder() -> InternalBattery {
+		let battery = InternalBattery()
+		battery.maxCapacity = 100
+		battery.currentCapacity = Int.random(in: 0...(battery.maxCapacity ?? 0))
+		battery.isCharging = true
+		battery.acPowered = true
+		return battery
+	}
+	
 	static var previews: some View {
-		BatteryWidgetSmall(batteries: [InternalBattery()])
+		BatteryWidgetSmall(batteries: [batteryPlaceHolder(), batteryPlaceHolder()])
 			.previewContext(WidgetPreviewContext(family: .systemSmall))
 	}
 }

@@ -15,16 +15,11 @@ struct BatteryProvider: TimelineProvider {
 	}
 
 	func getSnapshot(in context: Context, completion: @escaping (BatteryEntry) -> ()) {
-		if context.isPreview {
-			let entry = BatteryEntry(batteries: [])
+		var batteries = [InternalBattery]()
+		if let battery = InternalFinder().getInternalBattery() {
+			batteries.append(battery)
+			let entry = BatteryEntry(batteries: batteries)
 			completion(entry)
-		} else {
-			var batteries = [InternalBattery]()
-			if let battery = InternalFinder().getInternalBattery() {
-				batteries.append(battery)
-				let entry = BatteryEntry(batteries: batteries)
-				completion(entry)
-			}
 		}
 	}
 

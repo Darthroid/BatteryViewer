@@ -56,6 +56,7 @@ public class InternalFinder {
 
 	fileprivate func getBatteryData() -> InternalBattery {
 		let battery = InternalBattery()
+		battery.type = .mac
 
 		let snapshot = IOPSCopyPowerSourcesInfo().takeRetainedValue()
 		let sources = IOPSCopyPowerSourcesList(snapshot).takeRetainedValue() as Array

@@ -8,13 +8,27 @@
 import Foundation
 import IOKit.ps
 
-protocol Battery: AnyObject {
+public protocol Battery: AnyObject {
 	var isCharging: Bool? { get set }
 	var isCharged: Bool? { get set }
 	var charge: Double? { get }
+	var type: BatteryType { get set }
 }
 
-public class InternalBattery: Battery, Hashable {
+public enum BatteryType {
+	case mac, unknown, none
+	
+	var imageName: String {
+		switch self {
+		case .mac: return "laptopcomputer"
+		case .unknown: return "questionmark"
+		default: return ""
+		}
+	}
+}
+
+public class InternalBattery: Battery, Hashable, Identifiable {
+	public var id = UUID()
 	public var name: String?
 
 	public var timeToFull: Int?
@@ -37,6 +51,7 @@ public class InternalBattery: Battery, Hashable {
 	public var voltage: Double?
 	public var watts: Double?
 	public var temperature: Double?
+	public var type: BatteryType = .none
 
 	public var charge: Double? {
 		get {

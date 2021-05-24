@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		D12BA9022657EC4A005BC88D /* CircularPercentageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D12BA9012657EC4A005BC88D /* CircularPercentageView.swift */; };
+		D12BA9032657F65B005BC88D /* CircularPercentageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D12BA9012657EC4A005BC88D /* CircularPercentageView.swift */; };
 		D13CABBA265634E0000B337B /* BatteryViewerApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = D13CABB9265634E0000B337B /* BatteryViewerApp.swift */; };
 		D13CABBC265634E0000B337B /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D13CABBB265634E0000B337B /* ContentView.swift */; };
 		D13CABBE265634E1000B337B /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = D13CABBD265634E1000B337B /* Assets.xcassets */; };
@@ -50,6 +52,7 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
+		D12BA9012657EC4A005BC88D /* CircularPercentageView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CircularPercentageView.swift; sourceTree = "<group>"; };
 		D13CABB6265634E0000B337B /* BatteryViewer.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = BatteryViewer.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		D13CABB9265634E0000B337B /* BatteryViewerApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BatteryViewerApp.swift; sourceTree = "<group>"; };
 		D13CABBB265634E0000B337B /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
@@ -117,6 +120,7 @@
 				D13CABBB265634E0000B337B /* ContentView.swift */,
 				D13CABC926563505000B337B /* InternalBattery.swift */,
 				D13CABCA26563505000B337B /* InternalFinder.swift */,
+				D12BA9012657EC4A005BC88D /* CircularPercentageView.swift */,
 				D13CABBD265634E1000B337B /* Assets.xcassets */,
 				D13CABC2265634E1000B337B /* Info.plist */,
 				D13CABC3265634E1000B337B /* BatteryViewer.entitlements */,
@@ -256,6 +260,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				D12BA9022657EC4A005BC88D /* CircularPercentageView.swift in Sources */,
 				D13CABCC26563505000B337B /* InternalFinder.swift in Sources */,
 				D13CABBC265634E0000B337B /* ContentView.swift in Sources */,
 				D13CABBA265634E0000B337B /* BatteryViewerApp.swift in Sources */,
@@ -270,6 +275,7 @@
 				D13CABE526563548000B337B /* InternalFinder.swift in Sources */,
 				D13CABD92656352E000B337B /* BatteryWidget.swift in Sources */,
 				D13CABEB265637CE000B337B /* BatteryProvider.swift in Sources */,
+				D12BA9032657F65B005BC88D /* CircularPercentageView.swift in Sources */,
 				D13CABEE265637EF000B337B /* BatteryWidgetSmall.swift in Sources */,
 				D13CABEC265637D8000B337B /* BatteryEntry.swift in Sources */,
 				D13CABE62656354D000B337B /* InternalBattery.swift in Sources */,
