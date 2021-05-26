@@ -10,16 +10,16 @@ import SwiftUI
 import WidgetKit
 
 struct BatteryWidgetSmall: View {
-	@State var batteries: [InternalBattery]
+	@State var batteries: [Battery]
 	
 	var columnGrid: [GridItem] = [GridItem](repeating: .init(.flexible()), count: 2)
 
-	func elements() -> [InternalBattery] {
+	func elements() -> [Battery] {
 		var elements = batteries
 		if elements.count < 4 {
-			var arr = [InternalBattery]()
+			var arr = [Battery]()
 			for _ in 0...(4 - elements.count) {
-				arr.append(InternalBattery())
+				arr.append(Battery())
 			}
 			elements.append(contentsOf: arr)
 		}
@@ -67,17 +67,11 @@ struct BatteryWidgetSmall: View {
 }
 
 struct BatteryWidgetSmall_Previews: PreviewProvider {
-	static func batteryPlaceHolder() -> InternalBattery {
-		let battery = InternalBattery()
-		battery.maxCapacity = 100
-		battery.currentCapacity = Int.random(in: 0...(battery.maxCapacity ?? 0))
-		battery.isCharging = true
-		battery.acPowered = true
-		return battery
-	}
-	
 	static var previews: some View {
-		BatteryWidgetSmall(batteries: [batteryPlaceHolder(), batteryPlaceHolder()])
+		BatteryWidgetSmall(batteries: [MockData.batteryPlaceholder()])
+			.previewContext(WidgetPreviewContext(family: .systemSmall))
+		
+		BatteryWidgetSmall(batteries: MockData.batteries(count: Int.random(in: 2...4)))
 			.previewContext(WidgetPreviewContext(family: .systemSmall))
 	}
 }

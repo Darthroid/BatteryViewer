@@ -27,31 +27,41 @@ struct CircularPercentageView: View {
 			)
 	}
 	
+	var chargingIcon: some View {
+		ZStack {
+			GeometryReader { geometry in
+				if battery.isCharging == true {
+					Image(systemName: "bolt.fill")
+						.position(x: geometry.size.width / 2, y: 0)
+				} else {
+					EmptyView()
+				}
+			}
+		}
+	}
+	
 	var body: some View {
 		GeometryReader { geometry in
 			ZStack {
 				Circle()
-					.stroke(lineWidth: 8.0)
+					.stroke(lineWidth: 6.0)
 					.opacity(0.3)
 					.foregroundColor(Color.secondary)
 					.aspectRatio(contentMode: .fit)
 				
 				Circle()
 					.trim(from: 0.0, to: CGFloat(min((battery.charge ?? 0) / 100.0, 1.0)))
-					.stroke(style: StrokeStyle(lineWidth: 8, lineCap: .round, lineJoin: .round))
+					.stroke(style: StrokeStyle(lineWidth: 6, lineCap: .round, lineJoin: .round))
 					.foregroundColor(self.color())
 					.rotationEffect(Angle(degrees: 270.0))
 					.aspectRatio(contentMode: .fit)
 				
 				VStack {
-					if battery.isCharging == true {
-						Image(systemName: "bolt.fill")
-							.padding(-8)
-					}
 					Spacer()
 					image(frame: geometry.frame(in: .local))
 					Spacer()
 				}
+				chargingIcon
 			}
 		}
 		.padding(8)
@@ -60,18 +70,8 @@ struct CircularPercentageView: View {
 }
 
 struct CircularPercentageView_Previews: PreviewProvider {
-	
-	static func batteryPlaceHolder() -> Battery {
-		let battery = InternalBattery()
-		battery.maxCapacity = 100
-		battery.currentCapacity = Int.random(in: 0...(battery.maxCapacity ?? 0))
-		battery.isCharging = true
-		battery.acPowered = true
-		return battery
-	}
-	
 	static var previews: some View {
-		CircularPercentageView(battery: batteryPlaceHolder())
+		CircularPercentageView(battery: MockData.batteryPlaceholder())
 			.previewLayout(.fixed(width: 100.0, height: 100.0))
 	}
 }
