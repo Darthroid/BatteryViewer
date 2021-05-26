@@ -24,8 +24,8 @@ struct BatteryWidgetEntryView : View {
 			switch family {
 			case .systemSmall:
 				BatteryWidgetSmall(batteries: entry.batteries)
-//			case .systemMedium:
-//				BatteryWidgetSmall(batteries: entry.batteries)
+			case .systemMedium:
+				BatteryWidgetMedium(batteries: entry.batteries)
 //			case .systemLarge:
 //				BatteryWidgetSmall(batteries: entry.batteries)
 			@unknown default:
@@ -45,6 +45,6 @@ struct BatteryWidget: Widget {
 		}
 		.configurationDisplayName("Battery widget")
 		.description("Shows info about internal battery.")
-		.supportedFamilies([.systemSmall/*,.systemMedium, .systemLarge*/])
+		.supportedFamilies([.systemSmall,.systemMedium/*, .systemLarge*/])
 	}
 }

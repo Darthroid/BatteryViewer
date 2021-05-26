@@ -19,7 +19,7 @@ class MockData {
 	
 	static func batteries(count: Int) -> [Battery] {
 		var arr = [Battery]()
-		for _ in 0...count {
+		for _ in 0...count-1 {
 			arr.append(batteryPlaceholder())
 		}
 		return arr
