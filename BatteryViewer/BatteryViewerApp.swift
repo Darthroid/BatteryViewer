@@ -11,7 +11,15 @@ import SwiftUI
 struct BatteryViewerApp: App {
     var body: some Scene {
         WindowGroup {
-            ContentView()
+			if let battery = InternalFinder().getInternalBattery() {
+				ContentView(batteries: [battery])
+					.frame(minWidth: 400, minHeight: 300)
+//					.frame(maxWidth: .infinity, maxHeight: .infinity)
+			} else {
+				ContentView(batteries: [])
+					.frame(minWidth: 400, minHeight: 300)
+//					.frame(maxWidth: .infinity, maxHeight: .infinity)
+			}
         }
     }
 }

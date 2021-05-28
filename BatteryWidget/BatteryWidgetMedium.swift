@@ -32,10 +32,14 @@ struct BatteryWidgetMedium: View {
 			LazyHGrid(rows: columnGrid, alignment: .center, spacing: 8) {
 				ForEach(elements()) { battery in
 					VStack(alignment: .center, spacing: 8) {
-						CircularPercentageView(battery: battery)
-							.frame(
-								height: (geometry.frame(in: .local).height) / 2
-							)
+						CircularPercentageView(
+							value: battery.charge ?? 0,
+							iconName: battery.type.imageName,
+							isCharging: battery.acPowered == true || battery.isCharging == true
+						)
+						.frame(
+							height: (geometry.frame(in: .local).height) / 2
+						)
 						Text(
 							battery.charge != nil ? (String(format: "%.0f %%", (battery.charge ?? 0))) : " "
 						)

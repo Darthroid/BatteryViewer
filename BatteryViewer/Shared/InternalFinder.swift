@@ -40,7 +40,7 @@ public class InternalFinder {
 		self.serviceInternal = 0
 	}
 
-	public func getInternalBattery() -> InternalBattery? {
+	public func getInternalBattery() -> Battery? {
 		self.open()
 
 		if self.serviceInternal == 0 {
@@ -53,9 +53,25 @@ public class InternalFinder {
 
 		return battery
 	}
+	
+	public func getMacName() -> String {
+		return Host.current().localizedName ?? "Unknown Mac"
+	}
+	
+	public func getMacModelID() -> String {
+		let service = IOServiceGetMatchingService(kIOMasterPortDefault,
+												  IOServiceMatching("IOPlatformExpertDevice"))
+		var modelIdentifier: String?
+		if let modelData = IORegistryEntryCreateCFProperty(service, "model" as CFString, kCFAllocatorDefault, 0).takeRetainedValue() as? Data {
+			modelIdentifier = String(data: modelData, encoding: .utf8)?.trimmingCharacters(in: .controlCharacters)
+		}
 
-	fileprivate func getBatteryData() -> InternalBattery {
-		let battery = InternalBattery()
+		IOObjectRelease(service)
+		return modelIdentifier ?? ""
+	}
+
+	fileprivate func getBatteryData() -> Battery {
+		let battery = Battery()
 		battery.type = .mac
 
 		let snapshot = IOPSCopyPowerSourcesInfo().takeRetainedValue()

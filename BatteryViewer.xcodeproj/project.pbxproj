@@ -13,7 +13,7 @@
 		D13CABBC265634E0000B337B /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D13CABBB265634E0000B337B /* ContentView.swift */; };
 		D13CABBE265634E1000B337B /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = D13CABBD265634E1000B337B /* Assets.xcassets */; };
 		D13CABC1265634E1000B337B /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = D13CABC0265634E1000B337B /* Preview Assets.xcassets */; };
-		D13CABCB26563505000B337B /* InternalBattery.swift in Sources */ = {isa = PBXBuildFile; fileRef = D13CABC926563505000B337B /* InternalBattery.swift */; };
+		D13CABCB26563505000B337B /* Battery.swift in Sources */ = {isa = PBXBuildFile; fileRef = D13CABC926563505000B337B /* Battery.swift */; };
 		D13CABCC26563505000B337B /* InternalFinder.swift in Sources */ = {isa = PBXBuildFile; fileRef = D13CABCA26563505000B337B /* InternalFinder.swift */; };
 		D13CABD42656352E000B337B /* WidgetKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D13CABD32656352E000B337B /* WidgetKit.framework */; };
 		D13CABD62656352E000B337B /* SwiftUI.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D13CABD52656352E000B337B /* SwiftUI.framework */; };
@@ -21,11 +21,12 @@
 		D13CABDB2656352F000B337B /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = D13CABDA2656352F000B337B /* Assets.xcassets */; };
 		D13CABE02656352F000B337B /* BatteryWidgetExtension.appex in Embed App Extensions */ = {isa = PBXBuildFile; fileRef = D13CABD12656352E000B337B /* BatteryWidgetExtension.appex */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
 		D13CABE526563548000B337B /* InternalFinder.swift in Sources */ = {isa = PBXBuildFile; fileRef = D13CABCA26563505000B337B /* InternalFinder.swift */; };
-		D13CABE62656354D000B337B /* InternalBattery.swift in Sources */ = {isa = PBXBuildFile; fileRef = D13CABC926563505000B337B /* InternalBattery.swift */; };
+		D13CABE62656354D000B337B /* Battery.swift in Sources */ = {isa = PBXBuildFile; fileRef = D13CABC926563505000B337B /* Battery.swift */; };
 		D13CABEB265637CE000B337B /* BatteryProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = D13CABE9265635CA000B337B /* BatteryProvider.swift */; };
 		D13CABEC265637D8000B337B /* BatteryEntry.swift in Sources */ = {isa = PBXBuildFile; fileRef = D13CABE72656357C000B337B /* BatteryEntry.swift */; };
 		D13CABEE265637EF000B337B /* BatteryWidgetSmall.swift in Sources */ = {isa = PBXBuildFile; fileRef = D13CABED265637EF000B337B /* BatteryWidgetSmall.swift */; };
 		D1913D92265E8BD9003A724B /* BatteryWidgetMedium.swift in Sources */ = {isa = PBXBuildFile; fileRef = D1913D91265E8BD9003A724B /* BatteryWidgetMedium.swift */; };
+		D1913D97266128C2003A724B /* ProgressBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = D1913D96266128C2003A724B /* ProgressBar.swift */; };
 		D1B19F4A265CC48500E90E19 /* MockData.swift in Sources */ = {isa = PBXBuildFile; fileRef = D1B19F49265CC48500E90E19 /* MockData.swift */; };
 		D1B19F4B265CC4EC00E90E19 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = D13CABBD265634E1000B337B /* Assets.xcassets */; };
 		D1B19F4C265CC4FD00E90E19 /* MockData.swift in Sources */ = {isa = PBXBuildFile; fileRef = D1B19F49265CC48500E90E19 /* MockData.swift */; };
@@ -64,7 +65,7 @@
 		D13CABC0265634E1000B337B /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
 		D13CABC2265634E1000B337B /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		D13CABC3265634E1000B337B /* BatteryViewer.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = BatteryViewer.entitlements; sourceTree = "<group>"; };
-		D13CABC926563505000B337B /* InternalBattery.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = InternalBattery.swift; sourceTree = "<group>"; };
+		D13CABC926563505000B337B /* Battery.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Battery.swift; sourceTree = "<group>"; };
 		D13CABCA26563505000B337B /* InternalFinder.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = InternalFinder.swift; sourceTree = "<group>"; };
 		D13CABD12656352E000B337B /* BatteryWidgetExtension.appex */ = {isa = PBXFileReference; explicitFileType = "wrapper.app-extension"; includeInIndex = 0; path = BatteryWidgetExtension.appex; sourceTree = BUILT_PRODUCTS_DIR; };
 		D13CABD32656352E000B337B /* WidgetKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = WidgetKit.framework; path = System/Library/Frameworks/WidgetKit.framework; sourceTree = SDKROOT; };
@@ -77,6 +78,7 @@
 		D13CABE9265635CA000B337B /* BatteryProvider.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BatteryProvider.swift; sourceTree = "<group>"; };
 		D13CABED265637EF000B337B /* BatteryWidgetSmall.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BatteryWidgetSmall.swift; sourceTree = "<group>"; };
 		D1913D91265E8BD9003A724B /* BatteryWidgetMedium.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BatteryWidgetMedium.swift; sourceTree = "<group>"; };
+		D1913D96266128C2003A724B /* ProgressBar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProgressBar.swift; sourceTree = "<group>"; };
 		D1B19F49265CC48500E90E19 /* MockData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MockData.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -124,10 +126,7 @@
 			children = (
 				D13CABB9265634E0000B337B /* BatteryViewerApp.swift */,
 				D13CABBB265634E0000B337B /* ContentView.swift */,
-				D13CABC926563505000B337B /* InternalBattery.swift */,
-				D13CABCA26563505000B337B /* InternalFinder.swift */,
-				D12BA9012657EC4A005BC88D /* CircularPercentageView.swift */,
-				D1B19F49265CC48500E90E19 /* MockData.swift */,
+				D1913D932661265B003A724B /* Shared */,
 				D13CABBD265634E1000B337B /* Assets.xcassets */,
 				D13CABC2265634E1000B337B /* Info.plist */,
 				D13CABC3265634E1000B337B /* BatteryViewer.entitlements */,
@@ -166,6 +165,34 @@
 				D13CABDD2656352F000B337B /* BatteryWidget.entitlements */,
 			);
 			path = BatteryWidget;
+			sourceTree = "<group>";
+		};
+		D1913D932661265B003A724B /* Shared */ = {
+			isa = PBXGroup;
+			children = (
+				D1913D9426612678003A724B /* Models */,
+				D1913D9526612686003A724B /* Views */,
+				D13CABCA26563505000B337B /* InternalFinder.swift */,
+				D1B19F49265CC48500E90E19 /* MockData.swift */,
+			);
+			path = Shared;
+			sourceTree = "<group>";
+		};
+		D1913D9426612678003A724B /* Models */ = {
+			isa = PBXGroup;
+			children = (
+				D13CABC926563505000B337B /* Battery.swift */,
+			);
+			path = Models;
+			sourceTree = "<group>";
+		};
+		D1913D9526612686003A724B /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				D12BA9012657EC4A005BC88D /* CircularPercentageView.swift */,
+				D1913D96266128C2003A724B /* ProgressBar.swift */,
+			);
+			path = Views;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -274,7 +301,8 @@
 				D13CABCC26563505000B337B /* InternalFinder.swift in Sources */,
 				D13CABBC265634E0000B337B /* ContentView.swift in Sources */,
 				D13CABBA265634E0000B337B /* BatteryViewerApp.swift in Sources */,
-				D13CABCB26563505000B337B /* InternalBattery.swift in Sources */,
+				D13CABCB26563505000B337B /* Battery.swift in Sources */,
+				D1913D97266128C2003A724B /* ProgressBar.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -290,7 +318,7 @@
 				D1B19F4C265CC4FD00E90E19 /* MockData.swift in Sources */,
 				D1913D92265E8BD9003A724B /* BatteryWidgetMedium.swift in Sources */,
 				D13CABEC265637D8000B337B /* BatteryEntry.swift in Sources */,
-				D13CABE62656354D000B337B /* InternalBattery.swift in Sources */,
+				D13CABE62656354D000B337B /* Battery.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

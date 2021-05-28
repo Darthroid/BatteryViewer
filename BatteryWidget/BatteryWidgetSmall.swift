@@ -32,10 +32,15 @@ struct BatteryWidgetSmall: View {
 			GeometryReader { geometry in
 				LazyVGrid(columns: columnGrid, spacing: 8) {
 					ForEach(elements()) { battery in
-						CircularPercentageView(battery: battery)
-							.frame(
-								height: (geometry.frame(in: .local).height) / 2
-							)
+//						CircularPercentageView(battery: battery)
+						CircularPercentageView(
+							value: battery.charge ?? 0,
+							iconName: battery.type.imageName,
+							isCharging: battery.acPowered == true || battery.isCharging == true
+						)
+						.frame(
+							height: (geometry.frame(in: .local).height) / 2
+						)
 					}
 				}
 				.frame(
@@ -49,7 +54,11 @@ struct BatteryWidgetSmall: View {
 				GeometryReader { geometry in
 					VStack(alignment: .leading) {
 						HStack(spacing: 8) {
-							CircularPercentageView(battery: battery)
+							CircularPercentageView(
+								value: battery.charge ?? 0,
+								iconName: battery.type.imageName,
+								isCharging: battery.acPowered == true || battery.isCharging == true
+							)
 							Spacer()
 						}
 						.frame(height: geometry.frame(in: .local).height / 2)

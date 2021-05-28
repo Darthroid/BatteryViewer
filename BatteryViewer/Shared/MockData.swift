@@ -14,6 +14,14 @@ class MockData {
 		battery.currentCapacity = Int.random(in: 0...(battery.maxCapacity ?? 0))
 		battery.isCharging = Bool.random()
 		battery.acPowered = battery.isCharging
+		
+		battery.designCycleCount = Int.random(in: 0...100)
+		battery.cycleCount = Int.random(in: 0...(battery.designCycleCount ?? 0))
+		
+		battery.designCapacity = 100
+		battery.maxCapacity = Int.random(in: 0...100)
+		battery.currentCapacity = Int.random(in: 0...(battery.maxCapacity ?? 0))
+		
 		return battery
 	}
 	

@@ -8,17 +8,21 @@
 import SwiftUI
 
 struct CircularPercentageView: View {
-	var battery: Battery
+//	var battery: Battery
 	
-	func color() -> Color {
-		switch battery.charge ?? 0 {
+	@State var value: Double
+	@State var iconName: String?
+	@State var isCharging: Bool?
+	
+	var color: Color {
+		switch value {
 		case 0...20: return .red
 		default: return .green
 		}
 	}
 	
 	func image(frame: CGRect) -> some View {
-		return Image(systemName: battery.type.imageName)
+		return Image(systemName: iconName ?? "")
 			.resizable()
 			.aspectRatio(contentMode: .fit)
 			.frame(
@@ -30,7 +34,7 @@ struct CircularPercentageView: View {
 	var chargingIcon: some View {
 		ZStack {
 			GeometryReader { geometry in
-				if battery.isCharging == true {
+				if isCharging == true {
 					Image(systemName: "bolt.fill")
 						.position(x: geometry.size.width / 2, y: 0)
 				} else {
@@ -50,9 +54,9 @@ struct CircularPercentageView: View {
 					.aspectRatio(contentMode: .fit)
 				
 				Circle()
-					.trim(from: 0.0, to: CGFloat(min((battery.charge ?? 0) / 100.0, 1.0)))
+					.trim(from: 0.0, to: CGFloat(min(value / 100.0, 1.0)))
 					.stroke(style: StrokeStyle(lineWidth: 6, lineCap: .round, lineJoin: .round))
-					.foregroundColor(self.color())
+					.foregroundColor(self.color)
 					.rotationEffect(Angle(degrees: 270.0))
 					.aspectRatio(contentMode: .fit)
 				
@@ -70,8 +74,13 @@ struct CircularPercentageView: View {
 }
 
 struct CircularPercentageView_Previews: PreviewProvider {
+	static let battery = MockData.batteryPlaceholder()
 	static var previews: some View {
-		CircularPercentageView(battery: MockData.batteryPlaceholder())
-			.previewLayout(.fixed(width: 100.0, height: 100.0))
+		CircularPercentageView(
+			value: battery.charge ?? 0,
+			iconName: battery.type.imageName,
+			isCharging: battery.acPowered == true || battery.isCharging == true
+		)
+		.previewLayout(.fixed(width: 100.0, height: 100.0))
 	}
 }

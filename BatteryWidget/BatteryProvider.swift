@@ -15,7 +15,7 @@ struct BatteryProvider: TimelineProvider {
 	}
 
 	func getSnapshot(in context: Context, completion: @escaping (BatteryEntry) -> ()) {
-		var batteries = [InternalBattery]()
+		var batteries = [Battery]()
 		if let battery = InternalFinder().getInternalBattery() {
 			batteries.append(battery)
 			let entry = BatteryEntry(batteries: batteries)
@@ -35,7 +35,7 @@ struct BatteryProvider: TimelineProvider {
 		let refresh = Calendar.current.date(byAdding: .minute, value: 15, to: Date()) ?? Date()
 		#endif
 		
-		var batteries = [InternalBattery]()
+		var batteries = [Battery]()
 		if let battery = InternalFinder().getInternalBattery() {
 			batteries.append(battery)
 			let entry = BatteryEntry(batteries: batteries)

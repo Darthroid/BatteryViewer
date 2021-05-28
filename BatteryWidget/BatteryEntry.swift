@@ -10,5 +10,5 @@ import WidgetKit
 
 struct BatteryEntry: TimelineEntry {
 	let date: Date = .init()
-	let batteries: [InternalBattery]
+	let batteries: [Battery]
 }
