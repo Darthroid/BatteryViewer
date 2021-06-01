@@ -30,7 +30,7 @@ struct ProgressBar: View {
 				Rectangle()
 					.frame(width: min(CGFloat(self.value / 100)*geometry.size.width, geometry.size.width), height: geometry.size.height)
 					.foregroundColor(color)
-					.animation(.linear)
+//					.animation(.linear)
 			}
 			.cornerRadius(45.0)
 		}
@@ -48,7 +48,7 @@ struct ProgressBar: View {
 				Text((String(format: "%.0f %%", value)))
 			}
 		}
-		.padding(.bottom)
+//		.padding(.vertical, 8)
 	}
 }
 

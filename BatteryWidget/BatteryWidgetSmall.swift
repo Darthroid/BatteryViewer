@@ -32,7 +32,6 @@ struct BatteryWidgetSmall: View {
 			GeometryReader { geometry in
 				LazyVGrid(columns: columnGrid, spacing: 8) {
 					ForEach(elements()) { battery in
-//						CircularPercentageView(battery: battery)
 						CircularPercentageView(
 							value: battery.charge ?? 0,
 							iconName: battery.type.imageName,

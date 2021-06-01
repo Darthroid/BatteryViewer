@@ -105,7 +105,6 @@ public class Battery: Identifiable {
 	}
 	
 	public func hash(into hasher: inout Hasher) {
-//		super.hash(into: &hasher)
 		hasher.combine(name)
 		hasher.combine(manufacturer)
 		hasher.combine(manufactureDate)
