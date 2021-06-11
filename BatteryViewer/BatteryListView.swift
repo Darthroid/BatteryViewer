@@ -12,6 +12,16 @@ import Combine
 struct BatteryListView: View {
 	@ObservedObject var viewModel = InternalBatteryInfoViewModel()
 	
+	func stack(_ title: String, _ value: String) -> some View {
+		HStack {
+			Text(title)
+				.font(.headline)
+				.fontWeight(.medium)
+			Spacer()
+			Text(value)
+		}
+	}
+	
 	var header: some View {
 		HStack(alignment: .center,spacing: 16) {
 			Image(systemName: viewModel.macIconName)
@@ -36,7 +46,8 @@ struct BatteryListView: View {
 	}
 	
 	var batteryStats: some View {
-		VStack(alignment: .leading) {
+		VStack(alignment: .leading, spacing: 4) {
+			Text("Last update: \(Date())")
 			if let charge = viewModel.battery?.charge {
 				ProgressBar(value: charge, title: "Current charge")
 					.frame(height: 32)
@@ -48,22 +59,28 @@ struct BatteryListView: View {
 					.padding(.bottom, 8)
 			}
 			if let cycles = viewModel.battery?.cycleCount {
-				Text("Cycles count: \(cycles)" + (viewModel.battery?.designCycleCount != nil ? " / \(viewModel.battery?.designCycleCount ?? 0)" : ""))
+				stack(
+					"Cycles count:",
+					"\(cycles)" + (viewModel.battery?.designCycleCount != nil ? " / \(viewModel.battery?.designCycleCount ?? 0)" : "")
+				)
 			}
 			if let currentCapacity = viewModel.battery?.currentCapacity {
-				Text("Current capacity: \(currentCapacity)" + (viewModel.battery?.maxCapacity != nil ? " / \(viewModel.battery?.maxCapacity ?? 0)" : "") + " " + "mAh")
+				stack(
+					"Current capacity:",
+					"\(currentCapacity)" + (viewModel.battery?.maxCapacity != nil ? " / \(viewModel.battery?.maxCapacity ?? 0)" : "") + " " + "mAh"
+				)
 			}
 			if let designCapacity = viewModel.battery?.designCapacity {
-				Text("Designed capacity: \(designCapacity) mAh")
+				stack("Designed capacity:", String(format: "%d mAh%", designCapacity))
 			}
 			if let watts = viewModel.battery?.watts {
-				Text("Discharging wattage: " + String(format: "%.1f W%", watts))
+				stack("Discharging wattage:", String(format: "%.1f W%", watts))
 			}
 			if let voltage = viewModel.battery?.voltage {
-				Text("Voltage: " + String(format: "%.1f V%", voltage))
+				stack("Voltage:", String(format: "%.1f V%", voltage))
 			}
 			if let temperature = viewModel.battery?.temperature {
-				Text("Temperature: " + String(format: "%.1f ℃%", temperature))
+				stack("Temperature:", String(format: "%.1f ℃%", temperature))
 			}
 		}
 		.padding(16)
